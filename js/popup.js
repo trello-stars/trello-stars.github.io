@@ -3,11 +3,8 @@
 var Promise = TrelloPowerUp.Promise;
 var t = TrelloPowerUp.iframe();
 
-var fruitSelector = document.getElementById('fruit');
-var vegetableSelector = document.getElementById('vegetable');
-
 t.render(function(){
-  return Promise.all([
+  /*return Promise.all([
     t.get('board', 'shared', 'fruit'),
     t.get('board', 'private', 'vegetable')
   ])
@@ -22,15 +19,17 @@ t.render(function(){
   .then(function(){
     t.sizeTo('#content')
     .done();
-  })
+  })*/
+  return t.sizeTo('#content').done();
 });
 
 document.getElementById('save').addEventListener('click', function(){
-  return t.set('board', 'private', 'vegetable', vegetableSelector.value)
+  /*return t.set('board', 'private', 'vegetable', vegetableSelector.value)
   .then(function(){
     return t.set('board', 'shared', 'fruit', fruitSelector.value);
   })
   .then(function(){
     t.closePopup();
-  })
+  })*/
+  return t.closePopup();
 })
