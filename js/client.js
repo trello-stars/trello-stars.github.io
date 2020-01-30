@@ -12,22 +12,15 @@ var getBadges = function(t){
     console.log('We just loaded the card name for fun: ' + cardName);
     
     return [{
-      // its best to use static badges unless you need your badges to refresh
-      // you can mix and match between static and dynamic
-      title: 'Detail Badge', // for detail badges only
-      text: 'Static',
-      icon: GRAY_ICON, // for card front badges only
-      color: null
-    }, {
       // card detail badges (those that appear on the back of cards)
       // also support callback functions so that you can open for example
       // open a popup on click
-      title: 'Popup Detail Badge', // for detail badges only
-      text: 'Popup',
+      title: 'Stars', // for detail badges only
+      text: 'Stars',
       icon: GRAY_ICON, // for card front badges only
       callback: function(context) { // function to run on click
         return context.popup({
-          title: 'Card Detail Badge Popup',
+          title: 'Stars',
           url: './popup.html',
           height: 184 // we can always resize later, but if we know the size in advance, its good to tell Trello
         });
