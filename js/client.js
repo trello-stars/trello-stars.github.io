@@ -29,6 +29,14 @@ var getBadges = function(t){
   });
 };
 
+var cardButtonCallback = function(t){
+  return t.popup({
+    title: 'Stars',
+    url: './popup.html',
+    height: 184 // we can always resize later, but if we know the size in advance, its good to tell Trello
+  });
+};
+
 // We need to call initialize to get all of our capability handles set up and registered with Trello
 TrelloPowerUp.initialize({
   'card-badges': function(t, options){
@@ -36,6 +44,15 @@ TrelloPowerUp.initialize({
   },
   'card-detail-badges': function(t, options) {
     return getBadges(t);
+  },
+  'card-buttons': function(t, options) {
+    return [{
+      // usually you will provide a callback function to be run on button click
+      // we recommend that you use a popup on click generally
+      icon: GRAY_ICON, // don't use a colored icon here
+      text: 'Open Popup',
+      callback: cardButtonCallback
+    }];
   }
 });
 
