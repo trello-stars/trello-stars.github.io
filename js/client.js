@@ -9,16 +9,13 @@ var getBadges = function(t){
   return t.card('name')
   .get('name')
   .then(function(cardName){
-    console.log('We just loaded the card name for fun: ' + cardName);
-    
+    ///TODO: load stars
+    ///TODO: update badge according to stars
     return [{
-      // card detail badges (those that appear on the back of cards)
-      // also support callback functions so that you can open for example
-      // open a popup on click
       title: 'Stars', // for detail badges only
       text: 'Stars',
       icon: GRAY_ICON, // for card front badges only
-      callback: function(context) { // function to run on click
+      callback: function(context) {
         return context.popup({
           title: 'Stars',
           url: './popup.html',
@@ -42,17 +39,15 @@ TrelloPowerUp.initialize({
   'card-badges': function(t, options){
     return getBadges(t);
   },
-  'card-detail-badges': function(t, options) {
-    return getBadges(t);
-  },
   'card-buttons': function(t, options) {
     return [{
-      // usually you will provide a callback function to be run on button click
-      // we recommend that you use a popup on click generally
       icon: GRAY_ICON, // don't use a colored icon here
-      text: 'Open Popup',
+      text: 'Stars',
       callback: cardButtonCallback
     }];
+  },
+  'card-detail-badges': function(t, options) {
+    return getBadges(t);
   }
 });
 
