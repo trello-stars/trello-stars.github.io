@@ -4,6 +4,7 @@
 var Promise = TrelloPowerUp.Promise;
 
 var GRAY_ICON = './images/icon-gray.svg';
+var STAR = '\u2605';
 
 var getBadges = function(t){
   return t.get('card', 'shared', 'stars', 'null')
@@ -20,15 +21,19 @@ var getBadges = function(t){
       return [];
     }
 
+    var starsText = '';
+    for(i = 0; i < stars; i++) {
+      starsText += STAR;
+    }
+
     return [{
-      //title: '' + stars + ' stars', // for detail badges only
-      text: '' + stars + ' stars',
+      text: starsText,
       icon: GRAY_ICON, // for card front badges only
       callback: function(context) {
         return context.popup({
-          title: '' + stars + ' stars',
+          title: starsText,
           url: './popup.html',
-          height: 184 // we can always resize later, but if we know the size in advance, its good to tell Trello
+          height: 184
         });
       }
     }];
@@ -37,7 +42,7 @@ var getBadges = function(t){
 
 var cardButtonCallback = function(t){
   return t.popup({
-    title: 'Stars',
+    title: 'Rate Card',
     url: './popup.html',
     height: 184 // we can always resize later, but if we know the size in advance, its good to tell Trello
   });
