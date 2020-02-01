@@ -55,9 +55,8 @@ var getBackBadges = function(t){
     }
 
     return [{
-      title: starsText,
-      text: 'Rate Card',
-      cardButtonCallback
+      text: starsText,
+      callback: cardButtonCallback
       /*callback: function(context) {
         return context.popup({
           title: starsText,
