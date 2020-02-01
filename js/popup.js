@@ -4,6 +4,8 @@ var Promise = TrelloPowerUp.Promise;
 var t = TrelloPowerUp.iframe();
 var starsInput = document.getElementById('starsCount');
 
+///TODO: use https://github.com/fredolss/rater-js to show star rating
+
 t.render(function(){
   return t.get('card', 'shared', 'stars', 'null')
   .then(function(stars) {

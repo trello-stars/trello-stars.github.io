@@ -55,15 +55,10 @@ var getBackBadges = function(t){
     }
 
     return [{
+      ///TODO: show rating category if set by the user
+      title: 'Rating',
       text: starsText,
       callback: cardButtonCallback
-      /*callback: function(context) {
-        return context.popup({
-          title: starsText,
-          url: './popup.html',
-          height: 184
-        });
-      }*/
     }];
   });
 };
