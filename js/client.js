@@ -26,16 +26,19 @@ var getBadges = function(t){
       starsText += STAR;
     }
 
+    var starsFrontText = STAR + stars;
+
     return [{
-      text: starsText,
-      icon: GRAY_ICON, // for card front badges only
-      callback: function(context) {
+      text: starsFrontText,
+      title: starsText,
+      cardButtonCallback
+      /*callback: function(context) {
         return context.popup({
           title: starsText,
           url: './popup.html',
           height: 184
         });
-      }
+      }*/
     }];
   });
 };
@@ -55,8 +58,7 @@ TrelloPowerUp.initialize({
   },
   'card-buttons': function(t, options) {
     return [{
-      icon: GRAY_ICON, // don't use a colored icon here
-      text: 'Stars',
+      text: STAR + ' Rate Card',
       callback: cardButtonCallback
     }];
   },
