@@ -10,9 +10,8 @@ t.render(function(){
     if(stars == 'null') {
       stars = 0;
     }
-    stars = parseInt(stars);
+    stars = parseInt("" + stars);
     console.log("stars: " + stars);
-
     starsInput.value = "" + stars;
   })
   .then(function(){
@@ -22,8 +21,8 @@ t.render(function(){
 });
 
 document.getElementById('save').addEventListener('click', function(){
-  ///TODO: add a selector for stars
-  return t.set('card', 'shared', 'stars', 5)
+  var stars = parseInt(starsInput.value);
+  return t.set('card', 'shared', 'stars', stars)
   .then(function(){
     t.closePopup();
   });
