@@ -19,7 +19,7 @@ var getFrontBadges = function(t){
     if(stars == 'null') {
       stars = 0;
     }
-    stars = parseInt("" + stars);
+    stars = parseInt('' + stars);
 
     if(stars <= 0) {
       return [];
@@ -34,12 +34,15 @@ var getFrontBadges = function(t){
 };
 
 var getBackBadges = function(t){
-  return t.get('card', 'shared', 'stars', 'null')
-  .then(function(stars) {
+  return Promise.all([
+    t.get('card', 'shared', 'stars', 'null'),
+    t.get('card', 'shared', 'stars-category', 'null')
+  ])
+  .spread(function(stars, category){
     if(stars == 'null') {
       stars = 0;
     }
-    stars = parseInt("" + stars);
+    stars = parseInt('' + stars);
 
     if(stars <= 0) {
       return [];
@@ -53,9 +56,12 @@ var getBackBadges = function(t){
       starsText += STAR;
     }
 
+    if(category == 'null') {
+      category = 'Rating';
+    }
+
     return [{
-      ///TODO: show rating category if set by the user
-      title: 'Rating ' + starsText,
+      title: category + ': ' + starsText,
       text: 'Rate',
       callback: cardButtonCallback
     }];
@@ -77,5 +83,3 @@ TrelloPowerUp.initialize({
     return getBackBadges(t);
   }
 });
-
-console.log('Loaded by: ' + document.referrer);

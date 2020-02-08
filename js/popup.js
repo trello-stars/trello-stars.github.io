@@ -9,12 +9,12 @@ var starsCategory = document.getElementById('stars-category');
 
 addCategoryButton.onclick = function() {
   categoryContent.hidden = false;
-  t.render();
+  return t.sizeTo('#content').done();
 };
 
 var starRating1 = raterJs( {
   starSize:32, 
-  element:document.querySelector("#rater"), 
+  element:document.querySelector('#rater'), 
   rateCallback:function rateCallback(rating, done) {
     this.setRating(rating);
     done();
@@ -30,12 +30,12 @@ t.render(function(){
     if(stars == 'null') {
       stars = 0;
     }
-    stars = parseInt("" + stars);
-    console.log("stars: " + stars);
+    stars = parseInt('' + stars);
+    console.log('stars: ' + stars);
     starRating1.setRating(stars);
 
     if(category != 'null') {
-      console.log("category: " + category);
+      console.log('category: ' + category);
       starsCategory.value = category;
     }
   })
@@ -48,6 +48,8 @@ t.render(function(){
 document.getElementById('save').addEventListener('click', function(){
   var stars = starRating1.getRating();
   var category = starsCategory.value;
+  if((category == 'null') || (category.length == 0)) category = 'null';
+  if(category.toLowerCase() == 'rating') category = 'null';
   return t.set('card', 'shared', { 'stars': stars, 'stars-category': category })
   .then(function(){
     t.closePopup();
