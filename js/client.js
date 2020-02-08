@@ -14,8 +14,11 @@ var cardButtonCallback = function(t){
 };
 
 var getFrontBadges = function(t){
-  return t.get('card', 'shared', 'stars', 'null')
-  .then(function(stars) {
+  return Promise.all([
+    t.get('card', 'shared', 'stars', 'null'),
+    t.get('card', 'shared', 'stars-category', 'null')
+  ])
+  .spread(function(stars, category){
     if(stars == 'null') {
       stars = 0;
     }
@@ -27,8 +30,13 @@ var getFrontBadges = function(t){
     if(stars > 5) {
       return [];
     }
+
+    var starText = '';
+    if(category != 'null') {
+      starText = category + ':';
+    }
     return [{
-      text: STAR + stars
+      text: starText + STAR + stars
     }];
   });
 };

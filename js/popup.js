@@ -31,11 +31,9 @@ t.render(function(){
       stars = 0;
     }
     stars = parseInt('' + stars);
-    console.log('stars: ' + stars);
     starRating1.setRating(stars);
 
     if(category != 'null') {
-      console.log('category: ' + category);
       starsCategory.value = category;
     }
   })
