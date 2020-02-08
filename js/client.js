@@ -9,7 +9,7 @@ var cardButtonCallback = function(t){
   return t.popup({
     title: 'Rate Card',
     url: './popup.html',
-    height: 184 // we can always resize later, but if we know the size in advance, its good to tell Trello
+    height: 100 // we can always resize later, but if we know the size in advance, its good to tell Trello
   });
 };
 
@@ -31,12 +31,12 @@ var getFrontBadges = function(t){
       return [];
     }
 
-    var starText = '';
+    var starText = STAR + stars;
     if(category != 'null') {
-      starText = category + ':';
+      starText = starText + '(' + category + ')';
     }
     return [{
-      text: starText + STAR + stars
+      text: starText
     }];
   });
 };
