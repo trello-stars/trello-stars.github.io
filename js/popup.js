@@ -9,6 +9,7 @@ var starsCategory = document.getElementById('stars-category');
 
 addCategoryButton.onclick = function() {
   categoryContent.hidden = false;
+  t.render();
 };
 
 var starRating1 = raterJs( {
@@ -21,19 +22,18 @@ var starRating1 = raterJs( {
 });
 
 t.render(function(){
-  return t.get('card', 'shared', 'stars', 'null')
-  .then(function(stars) {
+  return Promise.all([
+    t.get('card', 'shared', 'stars', 'null'),
+    t.get('card', 'shared', 'stars-category', 'null')
+  ])
+  .spread(function(stars, category){
     if(stars == 'null') {
       stars = 0;
     }
     stars = parseInt("" + stars);
     console.log("stars: " + stars);
     starRating1.setRating(stars);
-  })
-  .then(function() {
-    t.get('card', 'shared', 'stars-category', 'null')
-  })
-  .then(function(category) {
+
     if(category != 'null') {
       console.log("category: " + category);
       starsCategory.value = category;
@@ -48,12 +48,7 @@ t.render(function(){
 document.getElementById('save').addEventListener('click', function(){
   var stars = starRating1.getRating();
   var category = starsCategory.value;
-  return t.set('card', 'shared', 'stars', stars)
-  .then(function() {
-    if(category != 'null') {
-      t.set('card', 'shared', 'stars-category', category);
-    }
-  })
+  return t.set('card', 'shared', { 'stars': stars, 'stars-category': category })
   .then(function(){
     t.closePopup();
   });
