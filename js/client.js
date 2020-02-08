@@ -55,8 +55,8 @@ var getBackBadges = function(t){
 
     return [{
       ///TODO: show rating category if set by the user
-      title: 'Rating',
-      text: starsText,
+      title: 'Rating ' + starsText,
+      text: STAR + ' Rate Card',
       callback: cardButtonCallback
     }];
   });
