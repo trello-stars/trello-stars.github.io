@@ -3,7 +3,6 @@
 // we can access Bluebird Promises as follows
 var Promise = TrelloPowerUp.Promise;
 
-var GRAY_ICON = './images/icon-gray.svg';
 var STAR = '\u2605';
 
 var cardButtonCallback = function(t){
