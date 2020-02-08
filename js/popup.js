@@ -8,7 +8,7 @@ var categoryContent = document.getElementById('category-content');
 var starsCategory = document.getElementById('stars-category');
 
 addCategoryButton.onclick = function() {
-  categoryContent.hidden = false;
+  categoryContent.style.display = 'block';
   return t.sizeTo('#content').done();
 };
 
