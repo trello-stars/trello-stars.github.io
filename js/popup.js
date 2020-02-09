@@ -1,7 +1,13 @@
 // global TrelloPowerUp
 
 var Promise = TrelloPowerUp.Promise;
-var t = TrelloPowerUp.iframe();
+var t = TrelloPowerUp.iframe({
+  localization: {
+    defaultLocale: 'en',
+    supportedLocales: ['en', 'ru'],
+    resourceUrl: '../strings/{locale}.json'
+  }
+});
 var starsInput = document.getElementById('starsCount');
 var addCategoryButton = document.getElementById('add-category');
 var categoryContent = document.getElementById('category-content');
