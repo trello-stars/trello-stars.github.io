@@ -3,5 +3,6 @@
   "remove": "Убрать",
   "rate-сard": "Оценить",
   "rate-сard-link": "Оценить",
-  "default-category": "Оценка"
+  "default-category": "Оценка",
+  "category-title": "Название"
 }
