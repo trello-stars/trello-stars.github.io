@@ -41,8 +41,8 @@ t.render(function(){
     }
 
     starsCategory.placeholder = t.localizeKey('category-title');
-    starsSave.value = t.localizeKey('save');
-    starsReset.value = t.localizeKey('remove');
+    starsSave.innerText = t.localizeKey('save');
+    starsReset.innerText = t.localizeKey('remove');
   })
   .then(function(){
     t.sizeTo('#content')
@@ -50,7 +50,7 @@ t.render(function(){
   });
 });
 
-document.getElementById('save').addEventListener('click', function(){
+starsSave.addEventListener('click', function(){
   var stars = starRating1.getRating();
   var category = starsCategory.value;
   if(!stars) stars = null;
@@ -61,7 +61,7 @@ document.getElementById('save').addEventListener('click', function(){
   });
 })
 
-document.getElementById('reset').addEventListener('click', function(){
+starsReset.addEventListener('click', function(){
   return t.set('card', 'shared', { 'stars': null, 'stars-category': null })
   .then(function(){
     t.closePopup();
