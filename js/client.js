@@ -7,7 +7,7 @@ var STAR = '\u2605';
 
 var cardButtonCallback = function(t){
   return t.popup({
-    title: 'Rate Card',
+    title: t.localizeKey('rate-сard'),
     url: './popup.html',
     height: 100 // we can always resize later, but if we know the size in advance, its good to tell Trello
   });
@@ -65,12 +65,12 @@ var getBackBadges = function(t){
     }
 
     if(!category) {
-      category = 'Rating';
+      category = t.localizeKey('default-category');
     }
 
     return [{
       title: category + ': ' + starsText,
-      text: 'Rate',
+      text: t.localizeKey('rate-сard-link'),
       callback: cardButtonCallback
     }];
   });

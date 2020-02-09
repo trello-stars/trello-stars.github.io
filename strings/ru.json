@@ -1,5 +1,7 @@
 {
   "save": "Сохранить",
   "remove": "Убрать",
-  "rate-сard": "Оценить"
+  "rate-сard": "Оценить",
+  "rate-сard-link": "Оценить",
+  "default-category": "Оценка"
 }

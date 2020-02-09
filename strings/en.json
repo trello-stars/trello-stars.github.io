@@ -1,5 +1,7 @@
 {
   "save": "Save",
   "remove": "Remove",
-  "rate-сard": "Rate Card"
+  "rate-сard": "Rate Card",
+  "rate-сard-link": "Rate",
+  "default-category": "Rating"
 }
