@@ -83,11 +83,18 @@ TrelloPowerUp.initialize({
   },
   'card-buttons': function(t, options) {
     return [{
-      text: STAR + ' Rate Card',
+      text: STAR + ' ' + t.localizeKey('rate-сard'),
       callback: cardButtonCallback
     }];
   },
   'card-detail-badges': function(t, options) {
     return getBackBadges(t);
+  }
+},
+{
+  localization: {
+    defaultLocale: 'en',
+    supportedLocales: ['en', 'ru'],
+    resourceUrl: '../strings/{locale}.json'
   }
 });
