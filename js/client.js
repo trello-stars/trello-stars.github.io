@@ -15,11 +15,11 @@ var cardButtonCallback = function(t){
 
 var getFrontBadges = function(t){
   return Promise.all([
-    t.get('card', 'shared', 'stars', 'null'),
-    t.get('card', 'shared', 'stars-category', 'null')
+    t.get('card', 'shared', 'stars', null),
+    t.get('card', 'shared', 'stars-category', null)
   ])
   .spread(function(stars, category){
-    if(stars == 'null') {
+    if(!stars) {
       stars = 0;
     }
     stars = parseInt('' + stars);
@@ -32,7 +32,7 @@ var getFrontBadges = function(t){
     }
 
     var starText = STAR + stars;
-    if(category != 'null') {
+    if(category) {
       starText = starText + '(' + category + ')';
     }
     return [{
@@ -43,11 +43,11 @@ var getFrontBadges = function(t){
 
 var getBackBadges = function(t){
   return Promise.all([
-    t.get('card', 'shared', 'stars', 'null'),
-    t.get('card', 'shared', 'stars-category', 'null')
+    t.get('card', 'shared', 'stars', null),
+    t.get('card', 'shared', 'stars-category', null)
   ])
   .spread(function(stars, category){
-    if(stars == 'null') {
+    if(!stars) {
       stars = 0;
     }
     stars = parseInt('' + stars);
@@ -64,7 +64,7 @@ var getBackBadges = function(t){
       starsText += STAR;
     }
 
-    if(category == 'null') {
+    if(!category) {
       category = 'Rating';
     }
 
